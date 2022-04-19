@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+</head>
+<body>
+<div th:switch="${nameofquiz}">
+    <h2 th:case="null">No quiz found!</h2>
+    <div th:case="*">
+        <h2>Quiz</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Quiz name</th>
+                <th>Comment</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each=" name : ${nameofquiz}">
+                <td th:text="${name.id}"></td>
+                <td th:text="${name.quizName}"></td>
+                <td th:text="${name.comment}"></td>
+
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
