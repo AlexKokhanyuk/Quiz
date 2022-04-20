@@ -1,6 +1,8 @@
 package com.koh.springbootone.controller;
 
+import com.koh.springbootone.model.Quiz;
 import com.koh.springbootone.model.User;
+import com.koh.springbootone.service.QuizServise;
 import com.koh.springbootone.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,10 +16,12 @@ import java.util.List;
 @Controller
 public class UserController {
     private UserService userService;
+    private QuizServise quizServise;
 
     @Autowired
-    public UserController(UserService userService) {
+    public UserController(UserService userService, QuizServise quizServise) {
         this.userService = userService;
+        this.quizServise=quizServise;
     }
 
     @GetMapping("/users")
@@ -56,4 +60,12 @@ public class UserController {
         userService.saveUser(user);
         return "redirect:/users";
     }
+
+    @GetMapping("/quiz")
+    public String findAllQuiz(Model model) {
+        List<Quiz> quiz = quizServise.findAll();
+        model.addAttribute("quiz", quiz);
+        return "quiz";
+    }
+
 }

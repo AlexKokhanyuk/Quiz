@@ -5,7 +5,7 @@
     <title>Users</title>
 </head>
 <body>
-<div th:switch="${nameofquiz}">
+<div th:switch="${quiz}">
     <h2 th:case="null">No quiz found!</h2>
     <div th:case="*">
         <h2>Quiz</h2>
@@ -18,9 +18,9 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each=" name : ${nameofquiz}">
+            <tr th:each=" name : ${quiz}">
                 <td th:text="${name.id}"></td>
-                <td th:text="${name.quizName}"></td>
+                <td th:text="${name.title}"></td>
                 <td th:text="${name.comment}"></td>
 
             </tr>
