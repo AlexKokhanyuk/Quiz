@@ -30,3 +30,9 @@ text VARCHAR(500) NOT NULL,
     REFERENCES questions(id)
     ON DELETE CASCADE
     );
+
+INSERT INTO springbootone.quiz (user_id, title, comment)
+VALUES (1, 'First quiz', null)
+
+INSERT INTO springbootone.questions (quiz_id, body)
+VALUES (1, 'First question')

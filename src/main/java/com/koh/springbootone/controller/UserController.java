@@ -2,6 +2,7 @@ package com.koh.springbootone.controller;
 
 import com.koh.springbootone.model.Quiz;
 import com.koh.springbootone.model.User;
+import com.koh.springbootone.service.QuestionServise;
 import com.koh.springbootone.service.QuizServise;
 import com.koh.springbootone.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,11 +18,13 @@ import java.util.List;
 public class UserController {
     private UserService userService;
     private QuizServise quizServise;
+    private QuestionServise questionServise;
 
     @Autowired
-    public UserController(UserService userService, QuizServise quizServise) {
+    public UserController(UserService userService, QuizServise quizServise, QuestionServise questionServise) {
         this.userService = userService;
         this.quizServise=quizServise;
+        this.questionServise=questionServise;
     }
 
     @GetMapping("/users")
@@ -65,6 +68,8 @@ public class UserController {
     public String findAllQuiz(Model model) {
         List<Quiz> quiz = quizServise.findAll();
         model.addAttribute("quiz", quiz);
+
+        questionServise.findAll(1L);
         return "quiz";
     }
 
