@@ -6,6 +6,7 @@ import com.koh.springbootone.repository.AnswerRepository;
 import com.koh.springbootone.repository.QuestionRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,7 +25,8 @@ public class QuestionServise {
         Map<Question, List<Answer>> map = new HashMap<>();
         List<Question> list = questionRepository.findAllByQuizId(quizId);
         for (Question question : list) {
-            List<Answer> ansList=answerRepository.findByQuestionsId(question.getId());
+//            List<Answer> ansList=answerRepository.findByQuestionsId(question.getId());
+            List ansList = new ArrayList<Answer>();
             map.put(question, ansList);
         }
 
