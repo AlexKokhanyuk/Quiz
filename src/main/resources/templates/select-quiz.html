@@ -2,31 +2,30 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>My Quiz</title>
+    <title>Select Quiz</title>
 </head>
 <body>
 <div th:switch="${quiz}">
     <h2 th:case="null">No quiz found!</h2>
     <div th:case="*">
-        <h2>Quiz</h2>
+        <h2>Are you sure to select Quiz?</h2>
         <table>
             <thead>
             <tr>
                 <th>Id</th>
-                <th>Quiz name</th>
-                <th>Comment</th>
+                <th>First name</th>
+                <th>Last name</th>
             </tr>
             </thead>
             <tbody>
-            <tr th:each=" quiz : ${quiz}">
                 <td th:text="${quiz.id}"></td>
                 <td th:text="${quiz.title}"></td>
                 <td th:text="${quiz.comment}"></td>
-                <td><a th:href="@{select-quiz/{id}(id=${quiz.id})}">Select</a></td>
-            </tr>
             </tbody>
         </table>
     </div>
+        <p><a href="/quiz">Back&nbsp&nbsp</a>
+            <a th:href="@{/pass-quiz/{id}(id=${quiz.id})}">Agree</a></p>
 </div>
 </body>
 </html>
