@@ -21,6 +21,9 @@ public class Quiz {
     @Column(name="user_id")
     private Long userId;
 
+    @Column(name = "sequence_number")
+    private int sequenceNumber;
+
     @Column(name="title")
     private String title;
 

@@ -86,5 +86,11 @@ public class UserController {
 
         return "pass-quiz";
     }
+
+    @GetMapping("/quiz-create")
+    public String createQuizForm(User user) {
+        return "user-create";
+    }
+
 }
 
